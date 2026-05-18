@@ -22,6 +22,15 @@ class Database {
      */
     public function createDatabase() {
         // TODO: Implementar CREATE DATABASE IF NOT EXISTS dam_llibres
+        try{
+            $pdo = self::getConnection();
+            $sql = "CREATE DATABASE IF NOT EXISTS 
+            `dam_llibres` default character set utf8 collate utf8_general_ci";
+            $pdo->exec($sql);
+            return true;
+        } catch (PDOException $e){
+            return false;
+        }
     }
 
     /**
